@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body { 
+    background-color: rgb(255, 230, 167, 0.5);
+    color: #333;
+    font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: context-menu;
+    perspective: 450px;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* common codes */
+
+a { 
+    text-decoration: none;
+    color: #333;
+}
+h2 { text-align: center; }
+a, h2 { text-transform: capitalize; }
+
+.hero_image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main, section { 
+    margin: 25px auto;
+    padding: 25px 0;
+}
+main { margin-top: auto; }
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* header design */
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+header .container { 
+    height: 55px;
+    margin-top: 25px;
+}
+.header_logo {
+    font-size: 55px;
+    color: #6f1d1b;
+}
+header ul {
+    list-style: none;
+    margin: 15px 40px;
+}
+header ul li {
+    display: inline-block;
+    padding: 0px 10px;
+    margin: auto 5px;
+    position: relative;
+    height: 30px;
+}
+header ul li:hover { cursor: pointer; }
+
+/* we will use the after pseudo element here for the horizontal borders */
+/* we will use the before pseudo element here for the vertical borders */
+header ul li::after, header ul li:before {
+    position: absolute;
+    content: "";
+    top: -2px; /* the pseudo element border width */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #6f1d1b;
+}
+header ul li::after {
+    border-left: transparent;
+    border-right: transparent;
+    transform: scaleX(0);
+}
+header ul li:hover::after {
+    transform: scaleX(1);
+    transition: 400ms;
+}
+header ul li::before {
+    border-top: transparent;
+    border-bottom: transparent;
+    transform: scaleY(0);
+    left: -2px;
+    height: 34px; /* the pseudo element height = the element height + 2 * the pseudo element border height */
+}
+header ul li:hover::before {
+    transform: scaleY(1);
+    transition: 200ms;
+}
+
+.header_icons i {
+    font-size: 24px;
+    margin-right: 15px;
+    color: #6f1d1b;
+}
+.cart_item_count {
+    width: 14px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: #99582a;
+    color: white;
+    margin-top: 15px;
+    margin-left: -15px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 21px;
+} 
+
+.header_logo, header ul, .header_icons, .item { float:left; }
+.header_peripherals, .cart_item, .cart_item_count, .cart_item span { float: right; }
+
+.header_peripherals { margin-top: 15px; }
+.cart_item span { margin-top: 10px; }
+
+.hidden_box {
+    width: 25vw;
+    background-color: beige;
+    position: absolute;
+    z-index: 1;
+    top: 35px;
+    left: -2px;
+    font-size: 16px;
+    padding: 10px 10px 10px 25px;
+    transform: scale(0);
+}
+.hidden_box .item { width: 30%; }
+.middle_items { margin: auto 5%; }
+.hidden_box .item p { margin: 5px auto; }
+.hidden_box .item_line_hr {
+    width: 80px;
+    border: 1px dashed #6f1d1b;
+    margin-bottom: 15px;
+}
+.home_link:hover .hidden_box { 
+    transform: scale(1); 
+    transition: 500ms; 
+}
+.hidden_box:hover {
+    visibility: visible;
+    cursor: auto;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* main design */
+
+.main_section_container {
+    height: 80vh;
+    background-image: url(../images/repeated_background.jpeg);
+    position: relative;
+}
+.welcome_message, .welcome_message button { background-color: #99582a; }
+.welcome_message {
+    width: 70%;
+    height: 25%;
+}
+.welcome_message button {
+    font-size: 26px;
+    display: block;
+    margin: 10px auto;    
+    border: 2px solid white;
+    padding: 0px 15px;
+}
+.welcome_message h2, .welcome_message button a { color: white; }
+.welcome_message h2 { font-size: 54px; }
+
+.hr_between_sections {
+    background-color: #6f1d1b;
+    height: 1px;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/*  special_categories_design */
+
+.special_categories_section { height: auto; }
+.special_categories_container { height: 50vh; }
+
+.main_title {
+    margin: auto auto 50px;
+    padding: 10px;
+}
+.main_title h2 { font-size: 36px; }
+.main_title hr {
+    width: 80px;
+    border: 1px solid #333;
+    margin: 10px auto;
+}
+.main_title:hover hr{
+    width: 120px;
+    transition: 1s;
+}
+
+.categories_item { 
+    width: 24.25%; 
+    margin-right: 1%;
+    height: 100%;
+    position: relative;
+}
+.last_item { margin-right: 0; }
+.categories_item .logo { height: 100%; }
+.categories_item .logo img { 
+    width: 100%; 
+    height: 75%;
+}
+.categories_item .info {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-transform: capitalize;
+}
+.categories_item .right_direction {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #432818;
+    text-align: center;
+    visibility: hidden;
+}
+.right_direction i {
+    font-size: 18px;
+    color: white;
+}
+.categories_item:hover .right_direction { visibility: visible; }
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/*  discounts_design */
+
+.discounts_container {
+    padding: 2.5vh;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.discounts_info, .discounts_offer { 
+    height: 45vh;
+    position: relative;
+}
+.discounts_info { width: 50%; }
+.discounts_info i, .discounts_info_title, .discounts_info_title span, .discounts_info_subject, .discounts_info_footer,
+.discounts_offer_logo, .discounts_offer_values { position: absolute; }
+.discounts_info i, .discounts_info_title { top: 5px; }
+.discounts_info i, .discounts_info_subject { left: o; }
+.discounts_info i { font-size: 48px; }
+.discounts_info_title { left: 60px; }
+.discounts_info_title p { font-size: 22px; }
+.discounts_info_title span { top: 20px; }
+.discounts_info_subject { top: 70px; }
+.discounts_info_footer {
+    bottom: 0;
+    width: 100%;
+}
+.discounts_info_footer hr {
+    width: 50px;
+    float: right;
+    margin: auto 5px;
+}
+
+.discounts_offer_logo, .discounts_offer_logo img {
+    width: 100%;
+    height: 100%;
+}
+.discounts_offer {
+    width: 23%;
+    transform: scale(1, 1);
+}
+.discounts_offer_values {
+    top: 10px;
+    left: 10px;
+    color: white;
+}
+.discounts_middle_item { margin: auto 2%; }
+.discounts_offer:hover {
+    transform: scale(1.1, 1.1);
+    transition: 350ms;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/*  services_design */
+
+.services_container { height: 15vh; }
+.services_items {
+    width: 19%;
+    height: 100%;
+}
+.animated_icon {
+    position: relative;
+    height: 50%;
+    overflow: hidden;
+}
+.animated_icon i { 
+    font-size: 36px;
+    transition: 200ms;
+}
+.hidden_animated_icon { top: 150%; }
+.services_items:hover .displayed_animated_icon { top: -50%; }
+.services_items:hover .hidden_animated_icon { top: 50%; }
+.services_items_info {
+    height: 50%;
+    text-align: center;
+    font-size: 16px;
+}
+.vr_between_items {
+    width: 0.1%;
+    margin: auto 0.575%;
+    height: 100%;
+    background-color: #6f1d1b;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/*  featured_collections_design */
+
+.subtitles, .featured_collections_item .profiles_links div, .featured_collections_item .info { text-align: center; }
+.featured_collections_main_title, .subtitles { margin: auto; }
+.subtitles { width: 40%; }
+.subtitles span { margin: auto 10px; }
+.featured_collections_container { height: 710px; }
+.featured_collections_item {
+    width: 30%;
+    height: 345px;
+    background-color: rgb(255, 230, 167, 0.5);
+    position: relative;
+}
+.featured_collections_item .logo {
+    width: 100%;
+    height: 225px;
+    transform-style: preserve-3d;
+    transition: 500ms; /* this transition time will be applied when hover is activated and when it is cancelled */
+}
+.featured_collections_item .forward, .featured_collections_item .backward, .featured_collections_item .logo img { 
+    width: 100%;
+    height: 100%;
+}
+.featured_collections_item .forward, .featured_collections_item .backward { 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.featured_collections_item .forward {
+    z-index: 1;
+    backface-visibility: hidden;
+}
+.featured_collections_item .backward, .featured_collections_item:hover .logo { transform: rotateY(-180deg); }
+.featured_collections_item .profiles_links { width: 180px; }
+.featured_collections_item .profiles_links div {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #6f1d1b;
+}
+.featured_collections_item .profiles_links div i {
+    color: white;
+    line-height: 40px;
+}
+.featured_collections_item .info {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 235px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+}
+.featured_collections_item .info .rating + p { margin: 5px auto; }
+.upper_items { margin-bottom: 20px; }
+.featured_collections_header { margin-bottom: 50px; }

@@ -1,0 +1,30 @@
+project_template_link
+https://islam28497.github.io/template-2/
+
+notes
+
+Problem_01 ( Header )
+    - Why the header scroll when we display the hidden box ? ( because of applying the overflow property )
+    - ( overflow: auto; is almost overflow: scroll; )
+    - we _here_ want to display the box outside the header so we have to allow the overflow content.
+
+Know that: 
+    - color used for icons is: #6f1d1b
+    - background-color used for divs is: #99582a
+    - color used for normal text is: #333
+    - color used for borders is: #6f1d1b or white
+
+special category ==> science fiction, fantasy, historical, horror.
+institution name, discounts: book1, book2.
+institution services
+
+featured products ==> featured editions ( إصدارات خاصة بنا )
+
+Problem_02:
+    - when we hover the book, the transform process is done during 100ms ( for example ).
+    - when we cancel the hover, the reverse transform process is done in 500ms ( how can we do it ? ).
+Solution:
+    - write the line ( transition: 500ms; ) for the element itself ( book_logo ), no just for its parent hover case ( book:hover book_logo ).
+
+Problem_03:
+    - in the services section, how can we display the icon from bottom to top ?
